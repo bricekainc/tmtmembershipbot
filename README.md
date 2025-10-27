@@ -1,59 +1,71 @@
-🚀 TMTmembershipBot: The Master Telegram Subscription Platform
+# 🚀 TMTmembershipBot: The Master Telegram Subscription Platform
 
-The TMTmembershipBot is a revolutionary Telegram Master Subscription Service designed to empower channel owners to monetize their premium content seamlessly. Connect your own Telegram bot, link your channels, and start accepting payments via M-Pesa, Paystack, and PayPal—all managed through a central platform.
+The **TMTmembershipBot** is a revolutionary **Telegram Master Subscription Service** designed to empower channel owners to monetize their premium content seamlessly.  
+Connect your own Telegram bot, link your channels, and start accepting payments via **M-Pesa**, **Paystack**, and **PayPal** — all managed through a central platform.
 
-✨ Key Features
+---
 
-Multi-Bot Architecture: Connect and manage multiple separate subscription bots under one master system.
+## ✨ Key Features
 
-Flexible Payment Gateways: Accept payments from users worldwide:
+### 🧩 Multi-Bot Architecture
+Connect and manage multiple separate subscription bots under one master system.
 
-🇰🇪 M-Pesa (Till/Paybill): Direct integration for instant Kenyan shilling payments.
+### 💳 Flexible Payment Gateways
+Accept payments from users worldwide:
 
-🌍 Paystack: Supports cards and bank transfers across Africa.
+- 🇰🇪 **M-Pesa (Till/Paybill)** — Direct integration for instant Kenyan shilling payments.  
+- 🌍 **Paystack** — Supports cards and bank transfers across Africa.  
+- 🌎 **PayPal** — International payments with automated KES → USD conversion *(1 USD = 150 KES)*.
 
-🌎 PayPal: International payments with automated KES to USD conversion (1 USD = 150 KES).
+### 🔒 Automated Access Control
+The connected bot automatically grants access via invite links and removes users upon subscription expiry.
 
-Automated Access Control: The connected bot automatically grants access via invite links and kicks users upon subscription expiry.
+### 💱 Multi-Currency Plans
+Create plans in **KES** or **USD**.
 
-Multi-Currency Plans: Create plans in KES or USD.
+### 🧭 Admin Dashboard
+Secure master control via the `/kariuki` command.
 
-Admin Dashboard: Secure master control via the /kariuki command.
+---
 
-💻 Technical Setup & Developer Guide
+## 💻 Technical Setup & Developer Guide
 
 This section is for developers and those setting up the deployment environment.
 
-Prerequisites
+### 🧰 Prerequisites
 
-You need the following accounts and services:
+You’ll need the following accounts and services:
 
-Telegram Bot Token: For the Master Bot (@TMTmembershipBot).
+- **Telegram Bot Token** — For the Master Bot (`@TMTmembershipBot`)
+- **Hosting** — Continuous running container service (e.g., Render, Koyeb)
+- **Database** — MySQL instance (hosted on your Hestia CP/phpMyAdmin)
+- **Payment Credentials** — API keys/credentials for M-Pesa (Daraja API), Paystack, and PayPal
 
-Hosting: A continuous running container service (e.g., Render, Koyeb) for the persistent Python bot and webhooks.
+---
 
-Database: MySQL instance (hosted on your Hestia CP/phpMyAdmin).
+### ⚙️ Installation
 
-Payment Credentials: API keys/credentials for M-Pesa (Daraja API), Paystack, and PayPal.
-
-Installation
-
-Clone the Repository:
-
-git clone [https://github.com/bricekainc/tmtmembershipbot.git](https://github.com/bricekainc/tmtmembershipbot.git)
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/bricekainc/tmtmembershipbot.git
 cd tmtmembershipbot
+````
 
+#### 2. Setup Environment
 
-Setup Environment:
-
+```bash
 # Install dependencies
 pip install -r requirements.txt
+```
 
+---
 
-Configure Environment Variables
+### 🔧 Configure Environment Variables
 
-Create a .env file in the root directory and fill in your confidential details. Do not commit this file to GitHub.
+Create a `.env` file in the root directory and fill in your confidential details.
+⚠️ **Do not commit this file to GitHub.**
 
+```bash
 # Master Bot Token
 BOT_TOKEN=8429065386:AAE3fMXJNFLbI0p1yl2tdXn2ZjoEq2LBomw
 ADMIN_TELEGRAM_ID=YOUR_TELEGRAM_USER_ID
@@ -69,46 +81,61 @@ DB_NAME=your_db_name
 ENCRYPTION_KEY=a_32_byte_secret_key_for_fernet_encryption_CHANGE_THIS_NOW
 
 # Webhook Base URL (The public URL of your deployed server)
-WEBHOOK_BASE_URL=[https://tmtmembershipbot.render.com](https://tmtmembershipbot.render.com)
+WEBHOOK_BASE_URL=https://tmtmembershipbot.render.com
+```
 
+---
 
-Database Schema Setup
+### 🗃️ Database Schema Setup
 
-Before running the bot, you must create the necessary tables in your MySQL database. All required schema definitions are provided in the schema.sql file.
+Before running the bot, create the necessary tables in your MySQL database.
+All schema definitions are provided in the `schema.sql` file.
 
-Running the Platform
+---
 
-The TMTmembershipBot platform runs as two interconnected processes:
+### 🚀 Running the Platform
 
-# 1. Start the main bot logic (Handles Telegram commands and auth)
+The **TMTmembershipBot** platform runs as two interconnected processes:
+
+```bash
+# 1. Start the main bot logic (Handles Telegram commands and authentication)
 python main.py
 
 # 2. Start the separate payment webhook API server (Receives payment confirmations)
 python webhook_server.py
+```
 
+---
 
-📖 User Guide for Channel Owners
+## 📖 User Guide for Channel Owners
 
-Get Started: Send /start to the Master Bot (@TMTmembershipBot).
+1. **Get Started:** Send `/start` to the Master Bot (`@TMTmembershipBot`).
+2. **Platform Fee:** Pay the required platform usage fee.
+3. **Connect Your Bot:** Provide your personal Bot API Key to the Master Bot.
+4. **Configure:** Follow the guided prompts to:
 
-Platform Fee: Pay the required platform usage fee.
+   * Link your premium channel/group *(your connected bot must be an admin)*
+   * Create your subscription plans
+   * Input your own M-Pesa, Paystack, and/or PayPal credentials securely
+5. **Monetize!** Users can now subscribe through your connected bot, and the platform handles all access control and payment validation automatically.
 
-Connect Your Bot: Provide your personal Bot API Key to the Master Bot.
+---
 
-Configure: Follow the guided prompts to:
+## 🤝 Support & Contributing
 
-Link your premium channel/group (your connected bot must be an admin).
+* **Issues:** Report bugs and issues [here](https://github.com/bricekainc/tmtmembershipbot/issues).
+* **Contributions:** Contributions are highly welcome!
+  Fork the repository and submit a pull request with clear, descriptive changes.
 
-Create your subscription plans.
+---
 
-Input your own M-Pesa, Paystack, and/or PayPal credentials securely.
+## 📜 License
 
-Monetize! Users can now subscribe through your connected bot, and the platform handles all access control and payment validation automatically.
+Licensed under the **MIT License**.
 
-🤝 Support & Contributing
+```
 
-Issues: Report bugs and issues here.
+---
 
-Contributions: Contributions are highly welcome! Please fork the repository and submit a pull request with clear, descriptive changes.
-
-License: MIT License
+Would you like me to add **badges** (e.g., Python version, license, build status, PayPal/M-Pesa support) and a **table of contents** to make it look more like a professional open-source README?
+```
