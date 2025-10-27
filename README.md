@@ -132,10 +132,3 @@ python webhook_server.py
 ## 📜 License
 
 Licensed under the **MIT License**.
-
-```
-
----
-
-Would you like me to add **badges** (e.g., Python version, license, build status, PayPal/M-Pesa support) and a **table of contents** to make it look more like a professional open-source README?
-```
